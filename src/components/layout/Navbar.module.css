@@ -1,0 +1,130 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  transition:
+    background 0.4s var(--ease),
+    box-shadow 0.4s var(--ease),
+    color 0.4s var(--ease);
+  color: var(--color-ivory);
+}
+
+.solid {
+  background: rgba(247, 244, 236, 0.96);
+  color: var(--color-text);
+  box-shadow: 0 8px 30px rgba(92, 21, 32, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.bar {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100%, 78rem);
+  margin-inline: auto;
+  padding: 0 1.15rem;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--color-gold);
+  font-style: italic;
+  margin: 0 0.2rem;
+}
+
+.desktop {
+  display: none;
+  gap: 0.15rem;
+}
+
+.link,
+.drawerLink {
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.78;
+  border-bottom: 1px solid transparent;
+}
+
+.link:hover,
+.drawerLink:hover,
+.active {
+  opacity: 1;
+  border-bottom-color: var(--color-gold);
+}
+
+.burger {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.burgerOpen span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.burgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerOpen span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.drawer {
+  display: grid;
+  overflow: hidden;
+  max-height: 0;
+  background: var(--color-ivory);
+  color: var(--color-text);
+  transition: max-height 0.4s var(--ease);
+}
+
+.drawerOpen {
+  max-height: 100vh;
+  padding-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.drawerLink {
+  width: 100%;
+  text-align: left;
+  padding: 0.95rem 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  border-bottom: 0;
+}
+
+@media (min-width: 980px) {
+  .desktop {
+    display: flex;
+  }
+
+  .burger,
+  .drawer {
+    display: none;
+  }
+}

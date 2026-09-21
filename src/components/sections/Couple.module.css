@@ -1,0 +1,49 @@
+.section {
+  background: var(--color-white);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.header h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.card {
+  text-align: center;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.card img {
+  width: 11.5rem;
+  height: 11.5rem;
+  margin-inline: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-gold);
+  box-shadow: 0 0 0 8px var(--color-ivory);
+}
+
+.card h3 {
+  margin: 1.25rem 0 0.7rem;
+  font-size: 1.8rem;
+}
+
+.card p {
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
