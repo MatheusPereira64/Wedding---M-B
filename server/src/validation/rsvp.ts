@@ -14,7 +14,6 @@ export function parseRsvp(input: unknown): { data?: RsvpPayload; errors: FieldEr
   const email = String(body.email ?? "").trim().toLowerCase();
   const phone = String(body.phone ?? "").trim();
   const notes = String(body.notes ?? "").trim();
-  const guests = Number(body.guests);
   const attending = body.attending;
 
   if (name.length < 3) errors.name = "Informe seu nome completo.";
@@ -23,9 +22,6 @@ export function parseRsvp(input: unknown): { data?: RsvpPayload; errors: FieldEr
   if (email.length > 180) errors.email = "E-mail muito longo.";
   if (phone.replace(/\D/g, "").length < 10) errors.phone = "Telefone inválido.";
   if (phone.length > 30) errors.phone = "Telefone inválido.";
-  if (!Number.isInteger(guests) || guests < 0 || guests > 10) {
-    errors.guests = "Informe de 0 a 10 acompanhantes.";
-  }
   if (attending !== "yes" && attending !== "no") {
     errors.attending = "Selecione uma opção.";
   }
@@ -40,7 +36,6 @@ export function parseRsvp(input: unknown): { data?: RsvpPayload; errors: FieldEr
       name,
       email,
       phone,
-      guests,
       attending,
       notes,
     },

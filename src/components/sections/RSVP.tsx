@@ -12,7 +12,6 @@ const empty: RsvpPayload = {
   name: "",
   email: "",
   phone: "",
-  guests: 0,
   attending: "yes",
   notes: "",
 };
@@ -22,7 +21,6 @@ function validate(data: RsvpPayload): Errors {
   if (data.name.trim().length < 3) errors.name = "Informe seu nome completo.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = "E-mail inválido.";
   if (data.phone.replace(/\D/g, "").length < 10) errors.phone = "Telefone inválido.";
-  if (data.guests < 0 || data.guests > 10) errors.guests = "Informe de 0 a 10 acompanhantes.";
   if (data.attending !== "yes" && data.attending !== "no") {
     errors.attending = "Selecione uma opção.";
   }
@@ -103,17 +101,6 @@ export function RSVP() {
                 autoComplete="tel"
               />
               {errors.phone ? <span>{errors.phone}</span> : null}
-            </label>
-            <label>
-              Número de acompanhantes
-              <input
-                type="number"
-                min={0}
-                max={10}
-                value={form.guests}
-                onChange={(e) => setForm({ ...form, guests: Number(e.target.value) })}
-              />
-              {errors.guests ? <span>{errors.guests}</span> : null}
             </label>
             <fieldset>
               <legend>Confirmação de presença</legend>

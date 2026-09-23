@@ -4,7 +4,6 @@ export type RsvpPayload = {
   name: string;
   email: string;
   phone: string;
-  guests: number;
   attending: RsvpAttending;
   notes: string;
 };

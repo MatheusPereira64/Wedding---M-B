@@ -78,7 +78,7 @@ Com `url` vazio, o site mostra “Link em breve”. Dá para adicionar várias l
 
 ### Confirmações de presença
 
-O formulário envia `POST /api/rsvp` com nome, e-mail, telefone, acompanhantes, presença e observações.
+O formulário envia `POST /api/rsvp` com nome, e-mail, telefone, presença e observações. O casamento é por convite, sem campo de acompanhantes.
 
 As respostas são salvas em `server/data/rsvps.json` (arquivo local, fora do Git). O mesmo e-mail não pode confirmar duas vezes.
 

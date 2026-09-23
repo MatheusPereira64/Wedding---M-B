@@ -4,7 +4,7 @@ import { FadeIn } from "../ui/FadeIn";
 import styles from "./Venue.module.css";
 
 export function Venue() {
-  const { venue, dateLong, timeLabel } = weddingData;
+  const { venue, dateLong, timeLabel, durationLabel } = weddingData;
 
   return (
     <section id="local" className={`section ${styles.section}`}>
@@ -22,6 +22,7 @@ export function Venue() {
             <p className={styles.meta}>
               {dateLong} · {timeLabel}
             </p>
+            <p className={styles.duration}>Duração: {durationLabel}</p>
             <p className={styles.address}>{venue.fullAddress}</p>
             <Button href={mapsUrl(venue.mapsQuery)} className={styles.cta}>
               Como chegar

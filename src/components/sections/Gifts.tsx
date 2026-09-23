@@ -72,6 +72,7 @@ export function Gifts() {
             value={weddingData.pix.key}
             name={weddingData.pix.name}
             qrImage={weddingData.pix.qrImage}
+            copyPaste={weddingData.pix.copyPaste}
           />
         </FadeIn>
       </div>

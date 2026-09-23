@@ -61,6 +61,9 @@ export function Schedule() {
           <p className="eyebrow">A celebração</p>
           <h2>Programação</h2>
           <span className="ornament" />
+          <p className={styles.duration}>
+            Início às {weddingData.timeLabel} · Duração de {weddingData.durationLabel}
+          </p>
         </header>
       </FadeIn>
       <ol className={styles.list}>

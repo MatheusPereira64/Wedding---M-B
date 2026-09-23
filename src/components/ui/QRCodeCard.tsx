@@ -7,18 +7,28 @@ type Props = {
   value: string;
   name: string;
   qrImage?: string;
+  copyPaste?: string;
 };
 
-export function QRCodeCard({ value, name, qrImage }: Props) {
-  const [copied, setCopied] = useState(false);
+async function copyText(text: string) {
+  await navigator.clipboard.writeText(text);
+}
 
-  const copy = async () => {
+export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
+  const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
+  const payload = copyPaste || value;
+
+  const sendPix = async () => {
+    const url = `/enviar-pix.html?nome=${encodeURIComponent(name)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+
     try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
+      await copyText(payload);
+      setStatus("ok");
+      window.setTimeout(() => setStatus("idle"), 3500);
     } catch {
-      setCopied(false);
+      setStatus("error");
+      window.setTimeout(() => setStatus("idle"), 3500);
     }
   };
 
@@ -30,7 +40,7 @@ export function QRCodeCard({ value, name, qrImage }: Props) {
           <img src={qrImage} alt={`QR Code PIX de ${name}`} className={styles.qrImage} />
         ) : (
           <QRCodeSVG
-            value={value}
+            value={payload}
             size={196}
             bgColor="#ffffff"
             fgColor="#5C1520"
@@ -40,9 +50,21 @@ export function QRCodeCard({ value, name, qrImage }: Props) {
         )}
       </div>
       <p className={styles.name}>{name}</p>
-      <p className={styles.key}>{value}</p>
-      <p className={styles.hint}>Aponte a câmera ou copie a chave para nos presentear.</p>
-      <Button onClick={() => void copy()}>{copied ? "Chave PIX copiada!" : "Copiar chave PIX"}</Button>
+      <p className={styles.hint}>
+        No celular, toque em Enviar PIX para abrir o pagamento. No computador, escaneie o QR
+        com o app do banco.
+      </p>
+      <Button onClick={() => void sendPix()}>Enviar PIX</Button>
+      {status === "ok" ? (
+        <p className={styles.feedback} role="status">
+          Código PIX copiado. Cole no app do seu banco.
+        </p>
+      ) : null}
+      {status === "error" ? (
+        <p className={styles.feedback} role="status">
+          Não foi possível copiar. Abra a aba e siga as instruções.
+        </p>
+      ) : null}
     </article>
   );
 }

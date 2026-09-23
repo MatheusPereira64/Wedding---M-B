@@ -21,9 +21,14 @@
 }
 
 .meta,
+.duration,
 .address {
   color: var(--color-text-muted);
   margin-top: 0.45rem;
+}
+
+.duration {
+  font-size: 0.95rem;
 }
 
 .cta {

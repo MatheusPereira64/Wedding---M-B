@@ -36,7 +36,6 @@ export type RsvpPayload = {
   name: string;
   email: string;
   phone: string;
-  guests: number;
   attending: "yes" | "no";
   notes: string;
 };
@@ -65,10 +64,12 @@ export const weddingData = {
   closingQuote:
     "Mal podemos esperar para celebrar esse momento ao lado de vocês.",
 
-  dateISO: "2027-03-26T16:00:00-04:00",
+  dateISO: "2027-03-26T18:00:00-04:00",
   dateLabel: "26.03.2027",
   dateLong: "26 de março de 2027",
-  timeLabel: "16:00",
+  timeLabel: "18:00",
+  durationLabel: "5 horas",
+  durationHours: 5,
   timezone: "America/Manaus",
 
   venue: {
@@ -194,31 +195,31 @@ export const weddingData = {
 
   schedule: [
     {
-      time: "16:00",
+      time: "18:00",
       title: "Cerimônia",
       description: "O momento mais esperado: o sim, as alianças e a emoção de quem ama.",
       icon: "rings",
     },
     {
-      time: "17:00",
+      time: "19:00",
       title: "Recepção",
       description: "Brindes, abraços e as primeiras fotos da celebração.",
       icon: "cheers",
     },
     {
-      time: "18:30",
+      time: "20:00",
       title: "Jantar",
       description: "Uma mesa para honrar quem veio de perto e de longe.",
       icon: "dinner",
     },
     {
-      time: "20:00",
+      time: "21:00",
       title: "Festa",
       description: "Música, pista e a noite para dançar até não poder mais.",
       icon: "music",
     },
     {
-      time: "23:30",
+      time: "23:00",
       title: "Encerramento",
       description: "O último brinde — e o começo da nossa vida a dois.",
       icon: "sparkles",
@@ -229,7 +230,7 @@ export const weddingData = {
     {
       question: "Posso levar acompanhante?",
       answer:
-        "O convite é individual. Caso o seu convite mencione acompanhante, fique à vontade. Se tiver dúvida, confirme no RSVP.",
+        "Não. O casamento é por convite, e cada convite vale apenas para as pessoas nomeadas nele.",
     },
     {
       question: "Existe estacionamento no local?",
@@ -244,7 +245,7 @@ export const weddingData = {
     {
       question: "Qual horário devo chegar?",
       answer:
-        "A cerimônia começa às 16:00. Pedimos que cheguem até 15:40 para que todos estejam acomodados.",
+        "A cerimônia começa às 18:00 e a celebração tem duração de 5 horas. Pedimos que cheguem até 17:40 para que todos estejam acomodados.",
     },
     {
       question: "Como confirmar minha presença?",
@@ -259,11 +260,12 @@ export const weddingData = {
   ] satisfies FaqItem[],
 
   pix: {
-    key: "000.000.000-00",
+    key: "05370147213",
     name: "Matheus Pereira",
-    qrImage: "",
-    copyLabel: "Copiar chave PIX",
-    copiedLabel: "Chave PIX copiada!",
+    qrImage: "/pix-qr.jpg",
+    /** Código PIX Copia e Cola (não exibido; usado no botão Enviar PIX) */
+    copyPaste:
+      "00020101021126330014br.gov.bcb.pix0111053701472135204000053039865802BR5915MATHEUS PEREIRA6006MANAUS62070503***6304BE1F",
   },
 
   gifts: {
