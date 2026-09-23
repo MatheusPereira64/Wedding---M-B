@@ -4,7 +4,10 @@
   z-index: 80;
   display: grid;
   place-items: center;
-  padding: 4rem 1rem 1.5rem;
+  padding: calc(4rem + env(safe-area-inset-top, 0px))
+    calc(1rem + env(safe-area-inset-right, 0px))
+    calc(1.5rem + env(safe-area-inset-bottom, 0px))
+    calc(1rem + env(safe-area-inset-left, 0px));
 }
 
 .backdrop {
@@ -36,19 +39,19 @@
 }
 
 .close {
-  top: 0.75rem;
-  right: 0.85rem;
+  top: calc(0.75rem + env(safe-area-inset-top, 0px));
+  right: calc(0.85rem + env(safe-area-inset-right, 0px));
   z-index: 5;
 }
 
 .prev {
-  left: 0.35rem;
+  left: calc(0.35rem + env(safe-area-inset-left, 0px));
   top: 50%;
   transform: translateY(-50%);
 }
 
 .next {
-  right: 0.35rem;
+  right: calc(0.35rem + env(safe-area-inset-right, 0px));
   top: 50%;
   transform: translateY(-50%);
 }
