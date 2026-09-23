@@ -72,6 +72,11 @@
   accent-color: var(--color-burgundy);
 }
 
+.formError {
+  color: var(--color-burgundy);
+  font-size: 0.86rem;
+}
+
 .success {
   max-width: 34rem;
   margin-inline: auto;

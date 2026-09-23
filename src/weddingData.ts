@@ -272,7 +272,6 @@ export const weddingData = {
       "A presença de vocês já é o maior presente. Se quiserem contribuir com a construção do nosso lar, deixamos uma lista e o PIX.",
     listLabel: "Lista de presentes",
     listText: "Escolha um presente para nos ajudar a construir nosso novo lar.",
-    listUrl: "#presentes",
   },
 
   rsvp: {
@@ -281,9 +280,6 @@ export const weddingData = {
     successTitle: "Recebemos o seu RSVP.",
     successText:
       "Obrigado por responder. Estamos muito felizes em compartilhar esse dia com você.",
-    submit: async (_payload: RsvpPayload) => {
-      await new Promise((resolve) => setTimeout(resolve, 700));
-    },
   },
 
   nav: [

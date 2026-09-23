@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from "react";
+import { ApiError } from "../../api/client";
+import { submitRsvp } from "../../api/rsvp";
 import { weddingData, type RsvpPayload } from "../../weddingData";
 import { Button } from "../ui/Button";
 import { FadeIn } from "../ui/FadeIn";
@@ -31,15 +33,28 @@ export function RSVP() {
   const [form, setForm] = useState<RsvpPayload>(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "ok">("idle");
+  const [formError, setFormError] = useState("");
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const nextErrors = validate(form);
     setErrors(nextErrors);
+    setFormError("");
     if (Object.keys(nextErrors).length) return;
+
     setStatus("sending");
-    await weddingData.rsvp.submit(form);
-    setStatus("ok");
+    try {
+      await submitRsvp(form);
+      setStatus("ok");
+    } catch (error) {
+      setStatus("idle");
+      if (error instanceof ApiError && error.fields) {
+        setErrors(error.fields);
+      }
+      setFormError(
+        error instanceof Error ? error.message : "Não foi possível confirmar a presença.",
+      );
+    }
   };
 
   return (
@@ -129,6 +144,7 @@ export function RSVP() {
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
               />
             </label>
+            {formError ? <p className={styles.formError}>{formError}</p> : null}
             <Button type="submit" disabled={status === "sending"}>
               {status === "sending" ? "Enviando..." : "Confirmar presença"}
             </Button>
