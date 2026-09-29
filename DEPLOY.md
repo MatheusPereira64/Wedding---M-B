@@ -6,13 +6,15 @@ Site de produção (project Pages):
 
 O Vite gera o build em **`docs/`** com `base: '/Wedding---M-B/'`.
 
-## 1. Ativar GitHub Pages
+## 1. Ativar GitHub Pages (obrigatório)
+
+> **Atenção:** se **Source** estiver em “Deploy from a branch” apontando para `main` / (raiz), o Pages serve o `index.html` **fonte** (`/src/main.tsx`, favicon literal). O site quebrado em produção vinha desse misconfig — o workflow Actions até rodava, mas não era a fonte ativa.
 
 1. Abra o repositório → **Settings → Pages**
-2. Em **Build and deployment → Source**, escolha **GitHub Actions**
+2. Em **Build and deployment → Source**, escolha **GitHub Actions** (não “Deploy from a branch”)
 3. Faça merge na `main` (ou dispare o workflow manualmente em **Actions → Deploy GitHub Pages**)
 
-Não use a opção “Deploy from a branch /docs” se o workflow Actions estiver ativo — o Actions já publica o artefacto.
+O workflow faz `vite build` → pasta `docs/` e publica só esse artefacto (assets com hash). Não versionar `docs/` nem apontar Pages para a raiz do repositório.
 
 ## 2. Secrets do EmailJS (obrigatório para RSVP)
 
