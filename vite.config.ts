@@ -1,8 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+// Project Pages: https://matheuspereira64.github.io/Wedding---M-B/
 export default defineConfig({
   plugins: [react()],
+  base: "/Wedding---M-B/",
+  build: {
+    outDir: "docs",
+    assetsDir: "assets",
+    emptyOutDir: true,
+  },
   server: {
     proxy: {
       "/api": "http://localhost:8787",

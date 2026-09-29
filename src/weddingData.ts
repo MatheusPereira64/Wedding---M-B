@@ -262,7 +262,7 @@ export const weddingData = {
   pix: {
     key: "05370147213",
     name: "Matheus Pereira",
-    qrImage: "/pix-qr.jpg",
+    qrImage: `${import.meta.env.BASE_URL}pix-qr.jpg`,
     /** Código PIX Copia e Cola (não exibido; usado no botão Enviar PIX) */
     copyPaste:
       "00020101021126330014br.gov.bcb.pix0111053701472135204000053039865802BR5915MATHEUS PEREIRA6006MANAUS62070503***6304BE1F",

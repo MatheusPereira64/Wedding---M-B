@@ -49,9 +49,13 @@ export function RSVP() {
       if (error instanceof ApiError && error.fields) {
         setErrors(error.fields);
       }
-      setFormError(
-        error instanceof Error ? error.message : "Não foi possível confirmar a presença.",
-      );
+      const message =
+        error instanceof Error ? error.message : "Não foi possível confirmar a presença.";
+      if (/emailjs|401|403|412|network|failed to fetch/i.test(message)) {
+        setFormError("Não foi possível enviar a confirmação. Tente novamente em instantes.");
+      } else {
+        setFormError(message);
+      }
     }
   };
 

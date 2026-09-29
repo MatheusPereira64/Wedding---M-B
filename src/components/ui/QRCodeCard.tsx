@@ -19,7 +19,7 @@ export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
   const payload = copyPaste || value;
 
   const sendPix = async () => {
-    const url = `/enviar-pix.html?nome=${encodeURIComponent(name)}`;
+    const url = `${import.meta.env.BASE_URL}enviar-pix.html?nome=${encodeURIComponent(name)}`;
     window.open(url, "_blank", "noopener,noreferrer");
 
     try {
