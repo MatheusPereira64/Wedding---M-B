@@ -4,6 +4,10 @@ Convite digital do casamento de **Matheus e Brena**, em **26 de março de 2027**
 
 A página é um site único, mobile-first, com visual editorial (burgundy, ouro e marfim). O convidado encontra rápido quem casa, quando, onde, como confirmar presença e como presentear.
 
+**Site (GitHub Pages):** [https://matheuspereira64.github.io/Wedding---M-B/](https://matheuspereira64.github.io/Wedding---M-B/)
+
+Guia completo de publicação: [`DEPLOY.md`](DEPLOY.md).
+
 ## O que o site tem
 
 1. **Hero** — foto, nomes, data e atalhos para RSVP e detalhes  
@@ -13,7 +17,7 @@ A página é um site único, mobile-first, com visual editorial (burgundy, ouro 
 5. **Galeria** — grid com lightbox  
 6. **Local** — endereço, mapa e “Como chegar”  
 7. **Programação** — cerimônia, recepção, jantar, festa e encerramento  
-8. **RSVP** — formulário de confirmação, gravado no backend  
+8. **RSVP** — formulário de confirmação (e-mail via EmailJS em produção)  
 9. **Presentes** — links das listas + PIX  
 10. **Dress code** — social / esporte fino  
 11. **FAQ**  
@@ -25,6 +29,7 @@ Precisa de Node.js 20 ou superior.
 
 ```bash
 npm install
+cp .env.example .env   # opcional: preencha EmailJS para testar o e-mail
 npm run dev
 ```
 
@@ -42,8 +47,16 @@ Outros comandos:
 ```bash
 npm run dev:web   # só o frontend
 npm run dev:api   # só o backend
-npm run build     # build de produção do site
+npm run build     # build de produção → pasta docs/
+npm run preview   # preview do build (base /Wedding---M-B/)
 ```
+
+## GitHub Pages
+
+O workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) faz `npm ci`, `npm run build` e publica `docs/` automaticamente em cada push na `main`.
+
+1. **Settings → Pages → Source: GitHub Actions**
+2. Secrets (Actions) com EmailJS — ver [`.env.example`](.env.example) e [`DEPLOY.md`](DEPLOY.md)
 
 ## Onde personalizar
 
@@ -62,7 +75,7 @@ Altere ali:
 
 ### Lista de presentes
 
-Os links das lojas ficam em **[`server/data/gifts.json`](server/data/gifts.json)**.
+Os links das lojas ficam em **[`server/data/gifts.json`](server/data/gifts.json)** (também embutidos no frontend para Pages).
 
 ```json
 {
@@ -76,13 +89,25 @@ Os links das lojas ficam em **[`server/data/gifts.json`](server/data/gifts.json)
 
 Com `url` vazio, o site mostra “Link em breve”. Dá para adicionar várias listas no mesmo arquivo.
 
-### Confirmações de presença
+### Confirmações de presença (RSVP)
 
-O formulário envia `POST /api/rsvp` com nome, e-mail, telefone, presença e observações. O casamento é por convite, sem campo de acompanhantes.
+O formulário envia nome, e-mail, telefone, presença (sim/não) e observações.
 
-As respostas são salvas em `server/data/rsvps.json` (arquivo local, fora do Git). O mesmo e-mail não pode confirmar duas vezes.
+| Ambiente | Como funciona |
+|----------|----------------|
+| **GitHub Pages** | EmailJS no browser → e-mail para `matheuspereira6464@gmail.com` |
+| **Local sem EmailJS** | `POST /api/rsvp` no Express → `server/data/rsvps.json` |
+| **Local com EmailJS** | Mesmo fluxo de produção (e-mail) |
 
-Endpoints da API:
+Variáveis (nunca commitadas — só `.env` / GitHub Secrets):
+
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
+
+O casamento é por convite, sem campo de acompanhantes.
+
+Endpoints da API local (opcional em desenvolvimento):
 
 | Método | Rota          | Função                         |
 |--------|---------------|--------------------------------|
@@ -95,7 +120,7 @@ Endpoints da API:
 ```
 src/
   weddingData.ts          conteúdo do casamento
-  api/                    cliente HTTP (RSVP e presentes)
+  api/                    RSVP (EmailJS + API) e presentes
   components/
     layout/               navbar e rodapé
     sections/             cada bloco da página
@@ -103,9 +128,12 @@ src/
   styles/                 cores e estilos globais
 
 server/
-  src/                    Express (rotas, validação, gravação)
+  src/                    Express (rotas, validação, gravação) — só local
   data/gifts.json         links das listas
-  data/rsvps.json         confirmações (gerado ao usar o site)
+  data/rsvps.json         confirmações locais (gerado ao usar a API)
+
+.github/workflows/        deploy GitHub Pages
+docs/                     saída do build (gerada no CI; não versionar)
 ```
 
 ## Visual
@@ -121,4 +149,4 @@ As fotos atuais são placeholders. Troque as URLs em `weddingData.ts` pelas foto
 
 ## Stack
 
-React, TypeScript e Vite no frontend. Express no backend, com dados em JSON para começar. Tudo em um único repositório.
+React, TypeScript e Vite no frontend. EmailJS para RSVP em produção (Pages). Express no backend local, com dados em JSON. Tudo em um único repositório.
