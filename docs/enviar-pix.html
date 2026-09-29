@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Enviar PIX | Matheus & Brena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --burgundy: #7a1f32;
+        --burgundy-deep: #5c1520;
+        --gold: #c4a574;
+        --beige: #d4c4b0;
+        --ivory: #f7f4ec;
+        --text: #2c181c;
+        --muted: #6b4a50;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: var(--ivory);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 1.5rem 1.15rem 2.5rem;
+      }
+      .card {
+        width: min(100%, 26rem);
+        background: #fff;
+        border: 1px solid var(--beige);
+        padding: 2rem 1.35rem;
+        text-align: center;
+      }
+      .kicker {
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--gold);
+        margin: 0 0 0.75rem;
+      }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 500;
+        font-size: 1.65rem;
+        margin: 0 0 0.35rem;
+      }
+      .name {
+        color: var(--muted);
+        margin: 0 0 1.25rem;
+        font-size: 0.95rem;
+      }
+      .qr {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 1.25rem;
+        padding: 0.65rem;
+        border: 1px solid var(--beige);
+        background: var(--ivory);
+      }
+      .qr img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+      }
+      .steps {
+        text-align: left;
+        margin: 0 0 1.35rem;
+        padding-left: 1.15rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+      .steps li + li {
+        margin-top: 0.45rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        border: 0;
+        border-radius: 2px;
+        background: var(--burgundy);
+        color: var(--ivory);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--burgundy-deep);
+      }
+      .status {
+        min-height: 1.4rem;
+        margin: 0.85rem 0 0;
+        font-size: 0.88rem;
+        color: var(--burgundy);
+      }
+      .back {
+        display: inline-block;
+        margin-top: 1.35rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: none;
+      }
+      .back:hover {
+        color: var(--burgundy);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <p class="kicker">PIX</p>
+      <h1>Enviar presente</h1>
+      <p class="name" id="nome">Matheus Pereira</p>
+      <div class="qr">
+        <img src="./pix-qr.jpg" alt="QR Code PIX" width="196" height="196" />
+      </div>
+      <ol class="steps">
+        <li>O código PIX já foi copiado automaticamente.</li>
+        <li>Abra o aplicativo do seu banco.</li>
+        <li>Escolha <strong>PIX → Pix Copia e Cola</strong>.</li>
+        <li>Cole o código e confirme o valor do presente.</li>
+      </ol>
+      <button class="btn" id="copiar" type="button">Copiar código PIX novamente</button>
+      <p class="status" id="status" role="status"></p>
+      <a class="back" href="./#presentes">Voltar ao site</a>
+    </main>
+    <script>
+      const PIX_CODE =
+        "00020101021126330014br.gov.bcb.pix0111053701472135204000053039865802BR5915MATHEUS PEREIRA6006MANAUS62070503***6304BE1F";
+
+      const params = new URLSearchParams(window.location.search);
+      const nome = params.get("nome");
+      if (nome) document.getElementById("nome").textContent = nome;
+
+      const status = document.getElementById("status");
+
+      async function copiar(mostrarFeedback) {
+        try {
+          await navigator.clipboard.writeText(PIX_CODE);
+          if (mostrarFeedback) status.textContent = "Código PIX copiado!";
+          return true;
+        } catch {
+          if (mostrarFeedback) {
+            status.textContent = "Toque no botão e permita a cópia, ou use o QR acima.";
+          }
+          return false;
+        }
+      }
+
+      document.getElementById("copiar").addEventListener("click", () => {
+        void copiar(true);
+      });
+
+      void copiar(true);
+    </script>
+  </body>
+</html>

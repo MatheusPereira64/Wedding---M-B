@@ -8,13 +8,21 @@ O Vite gera o build em **`docs/`** com `base: '/Wedding---M-B/'`.
 
 ## 1. Ativar GitHub Pages (obrigatório)
 
-> **Atenção:** se **Source** estiver em “Deploy from a branch” apontando para `main` / (raiz), o Pages serve o `index.html` **fonte** (`/src/main.tsx`, favicon literal). O site quebrado em produção vinha desse misconfig — o workflow Actions até rodava, mas não era a fonte ativa.
+> **Causa do 404 `main.tsx`:** se **Source** estiver em “Deploy from a branch” com pasta **`/` (raiz)**, o Pages publica o `index.html` de desenvolvimento (`<script src="/src/main.tsx">`). O browser pede `https://matheuspereira64.github.io/src/main.tsx` → **404**. O workflow Actions até gera o build certo, mas a fonte ativa continua sendo a raiz.
 
-1. Abra o repositório → **Settings → Pages**
+### Opção A — recomendada: GitHub Actions
+
+1. Abra [Settings → Pages](https://github.com/MatheusPereira64/Wedding---M-B/settings/pages)
 2. Em **Build and deployment → Source**, escolha **GitHub Actions** (não “Deploy from a branch”)
-3. Faça merge na `main` (ou dispare o workflow manualmente em **Actions → Deploy GitHub Pages**)
+3. Em **Actions → Deploy GitHub Pages**, rode **Run workflow** (ou faça um push na `main`)
 
-O workflow faz `vite build` → pasta `docs/` e publica só esse artefacto (assets com hash). Não versionar `docs/` nem apontar Pages para a raiz do repositório.
+### Opção B — pasta `docs/` na branch
+
+1. Em **Settings → Pages → Source**, escolha **Deploy from a branch**
+2. Branch: `main` · Folder: **`/docs`** (não `/`)
+3. Salve. Em 1–2 minutos o site deve carregar o JS/CSS gerados pelo Vite.
+
+O workflow faz `vite build` → pasta `docs/` e, na opção A, publica só esse artefacto.
 
 ## 2. Secrets do EmailJS (obrigatório para RSVP)
 

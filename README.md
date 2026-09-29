@@ -55,7 +55,7 @@ npm run preview   # preview do build (base /Wedding---M-B/)
 
 O workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) faz `npm ci`, `npm run build` e publica `docs/` automaticamente em cada push na `main`.
 
-1. **Settings → Pages → Source: GitHub Actions** (obrigatório — “Deploy from a branch” na raiz serve o HTML fonte e quebra o site)
+1. **Settings → Pages** — use **GitHub Actions**, ou branch `main` com pasta **`/docs`** (nunca a raiz `/`). Ver [`DEPLOY.md`](DEPLOY.md).
 2. Secrets (Actions) com EmailJS — ver [`.env.example`](.env.example) e [`DEPLOY.md`](DEPLOY.md)
 
 ## Onde personalizar
