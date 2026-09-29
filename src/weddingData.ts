@@ -106,7 +106,7 @@ export const weddingData = {
 
   closing: {
     image:
-      "https://images.unsplash.com/photo-1511285560929-80b456fe9d0f?auto=format&fit=crop&w=2000&q=80",
+      "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=2000&q=80",
   },
 
   story: [
@@ -177,7 +177,7 @@ export const weddingData = {
       span: "tall",
     },
     {
-      src: "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?auto=format&fit=crop&w=900&q=80",
+      src: "https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=900&q=80",
       alt: "Bolo e detalhes da festa",
       span: "normal",
     },
