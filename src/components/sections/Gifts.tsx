@@ -36,7 +36,7 @@ export function Gifts() {
   }, []);
 
   return (
-    <section id="presentes" className="section">
+    <section id="presentes" className={`section ${styles.section}`}>
       <FadeIn>
         <header className={styles.header}>
           <p className="eyebrow">Presentes</p>
@@ -50,11 +50,8 @@ export function Gifts() {
           {gifts.map((gift) => (
             <FadeIn key={gift.id}>
               <article className={styles.card}>
-                <p className={styles.emoji} aria-hidden>
-                  🎁
-                </p>
                 <h3>{gift.title}</h3>
-                {gift.store ? <p className={styles.store}>{gift.store}</p> : null}
+                {gift.store && gift.url ? <p className={styles.store}>{gift.store}</p> : null}
                 <p>{gift.description}</p>
                 {gift.url ? (
                   <Button href={gift.url} variant="ghost">

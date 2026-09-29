@@ -1,3 +1,7 @@
+.section {
+  background: var(--color-white);
+}
+
 .header {
   text-align: center;
   margin-bottom: 2.75rem;
@@ -40,7 +44,7 @@
   height: 9px;
   border-radius: 50%;
   background: var(--color-burgundy);
-  box-shadow: 0 0 0 4px var(--color-ivory);
+  box-shadow: 0 0 0 4px var(--color-white);
 }
 
 .card {
@@ -55,7 +59,7 @@
 }
 
 .copy .year {
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   letter-spacing: 0.22em;
   font-size: 0.78rem;
 }

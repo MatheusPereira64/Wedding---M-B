@@ -1,9 +1,9 @@
 .fade {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(12px);
   transition:
-    opacity 0.9s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
-    transform 0.9s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+    opacity var(--dur-reveal) var(--ease-out) var(--fade-delay, 0ms),
+    transform var(--dur-reveal) var(--ease-out) var(--fade-delay, 0ms);
 }
 
 .visible {
@@ -11,10 +11,10 @@
   transform: none;
 }
 
+/* Movimento reduzido: só um fade curto, sem deslocamento. */
 @media (prefers-reduced-motion: reduce) {
   .fade {
-    opacity: 1;
     transform: none;
-    transition: none;
+    transition: opacity 150ms ease;
   }
 }

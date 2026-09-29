@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import type { FaqItem } from "../../weddingData";
 import styles from "./Accordion.module.css";
 
@@ -8,24 +8,37 @@ type Props = {
 
 export function Accordion({ items }: Props) {
   const [open, setOpen] = useState<number | null>(0);
+  const baseId = useId();
 
   return (
     <div className={styles.list}>
       {items.map((item, index) => {
         const isOpen = open === index;
+        const triggerId = `${baseId}-trigger-${index}`;
+        const panelId = `${baseId}-panel-${index}`;
         return (
           <div className={styles.item} key={item.question}>
-            <button
-              className={styles.trigger}
-              aria-expanded={isOpen}
-              onClick={() => setOpen(isOpen ? null : index)}
+            <h3 className={styles.heading}>
+              <button
+                id={triggerId}
+                className={styles.trigger}
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => setOpen(isOpen ? null : index)}
+              >
+                <span>{item.question}</span>
+                <span className={`${styles.icon} ${isOpen ? styles.iconOpen : ""}`} aria-hidden>
+                  +
+                </span>
+              </button>
+            </h3>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={triggerId}
+              className={`${styles.panel} ${isOpen ? styles.panelOpen : ""}`}
+              inert={!isOpen}
             >
-              <span>{item.question}</span>
-              <span className={`${styles.icon} ${isOpen ? styles.iconOpen : ""}`} aria-hidden>
-                +
-              </span>
-            </button>
-            <div className={`${styles.panel} ${isOpen ? styles.panelOpen : ""}`}>
               <div>
                 <p>{item.answer}</p>
               </div>

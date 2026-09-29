@@ -4,7 +4,7 @@ import styles from "./DressCode.module.css";
 
 export function DressCode() {
   return (
-    <section className={`section ${styles.section}`}>
+    <section className="section">
       <FadeIn>
         <header className={styles.header}>
           <p className="eyebrow">Dress code</p>

@@ -2,8 +2,31 @@
   --color-burgundy-deep: #5c1520;
   --color-burgundy: #7a1f32;
   --color-gold: #c4a574;
+  /* Dourado para texto sobre fundos claros (4.87:1 no marfim, 5.36:1 no branco).
+     O --color-gold fica para filetes, bordas e texto sobre burgundy. */
+  --color-gold-text: #85653a;
   --color-beige: #d4c4b0;
+  /* Borda de campos de formulário (3.71:1 no marfim, 4.08:1 no branco). */
+  --color-line-strong: #8f7a66;
   --color-ivory: #f7f4ec;
   --color-white: #ffffff;
   --color-text: #2c181c;
+  --color-text-muted: #6b4a50;
+
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+
+  --nav-height: 4.35rem;
+  --radius: 2px;
+  --shadow: 0 18px 50px rgba(92, 21, 32, 0.08);
+  --max: 72rem;
+
+  --focus-ring: var(--color-burgundy);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-press: 120ms;
+  --dur-fast: 200ms;
+  --dur-base: 260ms;
+  --dur-reveal: 600ms;
 }

@@ -9,10 +9,18 @@ export async function listRsvps() {
 
 export async function createRsvp(payload: RsvpPayload) {
   const current = await listRsvps();
-  const duplicate = current.find((item) => item.email === payload.email);
+  const digits = (phone: string) => phone.replace(/\D/g, "");
+  // Sem e-mail, o telefone identifica quem já respondeu.
+  const duplicate = current.find((item) =>
+    payload.email ? item.email === payload.email : digits(item.phone) === digits(payload.phone),
+  );
 
   if (duplicate) {
-    const error = new Error("Este e-mail já confirmou presença.");
+    const error = new Error(
+      payload.email
+        ? "Este e-mail já confirmou presença."
+        : "Este telefone já confirmou presença.",
+    );
     error.name = "DuplicateRsvp";
     throw error;
   }

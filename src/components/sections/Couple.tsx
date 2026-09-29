@@ -1,4 +1,4 @@
-import { weddingData } from "../../weddingData";
+import { srcSet, weddingData } from "../../weddingData";
 import { FadeIn } from "../ui/FadeIn";
 import styles from "./Couple.module.css";
 
@@ -9,7 +9,6 @@ export function Couple() {
     <section className={`section ${styles.section}`}>
       <FadeIn>
         <header className={styles.header}>
-          <p className="eyebrow">Os noivos</p>
           <h2>Sobre nós</h2>
           <span className="ornament" />
         </header>
@@ -20,6 +19,8 @@ export function Couple() {
             <article className={styles.card}>
               <img
                 src={person.photo}
+                srcSet={srcSet(person.photo, [240, 480])}
+                sizes="184px"
                 alt={person.fullName}
                 width={480}
                 height={480}

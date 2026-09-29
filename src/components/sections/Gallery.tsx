@@ -1,4 +1,4 @@
-import { weddingData } from "../../weddingData";
+import { srcSet, weddingData } from "../../weddingData";
 import { useLightbox } from "../../hooks/useLightbox";
 import { FadeIn } from "../ui/FadeIn";
 import { Lightbox } from "../ui/Lightbox";
@@ -12,7 +12,6 @@ export function Gallery() {
     <section id="galeria" className="section">
       <FadeIn>
         <header className={styles.header}>
-          <p className="eyebrow">Memórias</p>
           <h2>Galeria</h2>
           <span className="ornament" />
         </header>
@@ -23,8 +22,18 @@ export function Gallery() {
             key={image.src + i}
             className={`${styles.item} ${styles[image.span]}`}
             onClick={() => open(i)}
+            aria-label={`Abrir foto ${i + 1} de ${weddingData.gallery.length}: ${image.alt}`}
           >
-            <img src={image.src} alt={image.alt} loading="lazy" width={900} height={1100} />
+            <img
+              src={image.src}
+              srcSet={srcSet(image.src, [400, 700, 1000, 1400])}
+              sizes={image.span === "wide" ? "50vw" : "(min-width: 720px) 25vw, 50vw"}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width={900}
+              height={1100}
+            />
           </button>
         ))}
       </div>
@@ -32,6 +41,8 @@ export function Gallery() {
         <Lightbox
           src={current.src}
           alt={current.alt}
+          index={index}
+          total={weddingData.gallery.length}
           onClose={close}
           onPrev={prev}
           onNext={next}

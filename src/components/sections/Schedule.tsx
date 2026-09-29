@@ -55,21 +55,21 @@ function Icon({ name }: { name: ScheduleItem["icon"] }) {
 
 export function Schedule() {
   return (
-    <section id="programacao" className="section">
+    <section id="programacao" className={`section ${styles.section}`}>
       <FadeIn>
         <header className={styles.header}>
-          <p className="eyebrow">A celebração</p>
           <h2>Programação</h2>
           <span className="ornament" />
           <p className={styles.duration}>
-            Início às {weddingData.timeLabel} · Duração de {weddingData.durationLabel}
+            Chegada até {weddingData.arrivalLabel} · Início às {weddingData.timeLabel} · Duração
+            de {weddingData.durationLabel}
           </p>
         </header>
       </FadeIn>
       <ol className={styles.list}>
-        {weddingData.schedule.map((item) => (
+        {weddingData.schedule.map((item, i) => (
           <li key={item.time}>
-            <FadeIn>
+            <FadeIn delay={Math.min(i, 4) * 60}>
               <article className={styles.row}>
                 <div className={styles.icon}>
                   <Icon name={item.icon} />

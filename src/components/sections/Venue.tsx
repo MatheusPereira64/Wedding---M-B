@@ -10,7 +10,6 @@ export function Venue() {
     <section id="local" className={`section ${styles.section}`}>
       <FadeIn>
         <header className={styles.header}>
-          <p className="eyebrow">O grande dia</p>
           <h2>Local do casamento</h2>
           <span className="ornament" />
         </header>

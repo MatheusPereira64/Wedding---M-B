@@ -9,15 +9,23 @@
   font-size: 0.72rem;
   font-weight: 500;
   border-radius: var(--radius);
+  user-select: none;
+  -webkit-user-select: none;
   transition:
-    background 0.35s var(--ease),
-    color 0.35s var(--ease),
-    border-color 0.35s var(--ease),
-    transform 0.35s var(--ease);
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-press) var(--ease-out);
 }
 
-.btn:hover {
-  transform: translateY(-1px);
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.62;
+  cursor: default;
+  transform: none;
 }
 
 .primary {
@@ -26,9 +34,8 @@
   border: 1px solid var(--color-burgundy);
 }
 
-.primary:hover {
+.primary:active {
   background: var(--color-burgundy-deep);
-  border-color: var(--color-burgundy-deep);
 }
 
 .secondary {
@@ -37,17 +44,31 @@
   border: 1px solid var(--color-gold);
 }
 
-.secondary:hover {
-  background: rgba(196, 165, 116, 0.16);
-}
-
 .ghost {
   background: var(--color-white);
   color: var(--color-burgundy);
-  border: 1px solid var(--color-beige);
+  border: 1px solid var(--color-line-strong);
 }
 
-.ghost:hover {
-  border-color: var(--color-gold);
-  color: var(--color-burgundy-deep);
+/* Hover só em dispositivos com mouse: no toque ele ficaria "preso". */
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover:not(:disabled) {
+    background: var(--color-burgundy-deep);
+    border-color: var(--color-burgundy-deep);
+  }
+
+  .secondary:hover {
+    background: rgba(196, 165, 116, 0.16);
+  }
+
+  .ghost:hover {
+    border-color: var(--color-burgundy);
+    color: var(--color-burgundy-deep);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:active {
+    transform: none;
+  }
 }

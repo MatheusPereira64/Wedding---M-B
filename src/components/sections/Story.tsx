@@ -1,10 +1,10 @@
-import { weddingData } from "../../weddingData";
+import { srcSet, weddingData } from "../../weddingData";
 import { FadeIn } from "../ui/FadeIn";
 import styles from "./Story.module.css";
 
 export function Story() {
   return (
-    <section id="historia" className="section">
+    <section id="historia" className={`section ${styles.section}`}>
       <FadeIn>
         <header className={styles.header}>
           <p className="eyebrow">Nossa história</p>
@@ -19,6 +19,8 @@ export function Story() {
               <article className={`${styles.card} ${index % 2 ? styles.reverse : ""}`}>
                 <img
                   src={item.photo}
+                  srcSet={srcSet(item.photo, [600, 900, 1200])}
+                  sizes="(min-width: 860px) 36rem, 100vw"
                   alt={item.title}
                   loading="lazy"
                   width={640}

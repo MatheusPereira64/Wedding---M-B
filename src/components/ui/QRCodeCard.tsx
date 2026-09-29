@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "./Button";
 import styles from "./QRCodeCard.module.css";
@@ -10,61 +10,82 @@ type Props = {
   copyPaste?: string;
 };
 
-async function copyText(text: string) {
-  await navigator.clipboard.writeText(text);
+const WIDE = "(min-width: 720px)";
+
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+
+  useEffect(() => {
+    const list = window.matchMedia(query);
+    const onChange = () => setMatches(list.matches);
+    list.addEventListener("change", onChange);
+    return () => list.removeEventListener("change", onChange);
+  }, [query]);
+
+  return matches;
 }
 
 export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
-  const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "ok">("idle");
+  const wide = useMediaQuery(WIDE);
   const payload = copyPaste || value;
 
-  const sendPix = async () => {
-    const url = `${import.meta.env.BASE_URL}enviar-pix.html?nome=${encodeURIComponent(name)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+  useEffect(() => {
+    if (status !== "ok") return;
+    const id = window.setTimeout(() => setStatus("idle"), 3500);
+    return () => window.clearTimeout(id);
+  }, [status]);
 
+  const copyCode = async () => {
     try {
-      await copyText(payload);
+      await navigator.clipboard.writeText(payload);
       setStatus("ok");
-      window.setTimeout(() => setStatus("idle"), 3500);
     } catch {
-      setStatus("error");
-      window.setTimeout(() => setStatus("idle"), 3500);
+      // Sem acesso à área de transferência: abre a página com o passo a passo.
+      const url = `${import.meta.env.BASE_URL}enviar-pix.html?nome=${encodeURIComponent(name)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
     }
   };
 
+  const qr = (
+    <div className={styles.qrWrap}>
+      {qrImage ? (
+        <img src={qrImage} alt={`QR Code PIX de ${name}`} className={styles.qrImage} />
+      ) : (
+        <QRCodeSVG
+          value={payload}
+          size={196}
+          bgColor="#ffffff"
+          fgColor="#5C1520"
+          level="M"
+          marginSize={2}
+        />
+      )}
+    </div>
+  );
+
   return (
     <article className={styles.card}>
-      <p className={styles.kicker}>PIX</p>
-      <div className={styles.qrWrap}>
-        {qrImage ? (
-          <img src={qrImage} alt={`QR Code PIX de ${name}`} className={styles.qrImage} />
-        ) : (
-          <QRCodeSVG
-            value={payload}
-            size={196}
-            bgColor="#ffffff"
-            fgColor="#5C1520"
-            level="M"
-            marginSize={2}
-          />
-        )}
-      </div>
+      <h3 className={styles.title}>PIX</h3>
+      {wide ? qr : null}
       <p className={styles.name}>{name}</p>
       <p className={styles.hint}>
-        No celular, toque em Enviar PIX para abrir o pagamento. No computador, escaneie o QR
-        com o app do banco.
+        {wide
+          ? "Escaneie o QR Code com o app do seu banco ou copie o código PIX."
+          : "Copie o código e cole no app do seu banco, na opção PIX Copia e Cola."}
       </p>
-      <Button onClick={() => void sendPix()}>Enviar PIX</Button>
-      {status === "ok" ? (
-        <p className={styles.feedback} role="status">
-          Código PIX copiado. Cole no app do seu banco.
-        </p>
-      ) : null}
-      {status === "error" ? (
-        <p className={styles.feedback} role="status">
-          Não foi possível copiar. Abra a aba e siga as instruções.
-        </p>
-      ) : null}
+      <Button onClick={() => void copyCode()} aria-describedby="pix-status">
+        {status === "ok" ? "Código copiado" : "Copiar código PIX"}
+      </Button>
+      <p id="pix-status" className={styles.feedback} role="status">
+        {status === "ok" ? "Pronto. Agora é só colar no app do seu banco." : ""}
+      </p>
+      {wide ? null : (
+        <details className={styles.qrDetails}>
+          <summary>Pagar com QR Code em outro aparelho</summary>
+          {qr}
+        </details>
+      )}
     </article>
   );
 }

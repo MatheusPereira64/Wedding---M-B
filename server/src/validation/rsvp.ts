@@ -16,14 +16,17 @@ export function parseRsvp(input: unknown): { data?: RsvpPayload; errors: FieldEr
   const notes = String(body.notes ?? "").trim();
   const attending = body.attending;
 
-  if (name.length < 3) errors.name = "Informe seu nome completo.";
+  if (name.length < 2) errors.name = "Informe seu nome.";
   if (name.length > 120) errors.name = "Nome muito longo.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = "E-mail inválido.";
+  // E-mail é opcional; só é validado quando preenchido.
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errors.email = "Confira o e-mail ou deixe o campo em branco.";
+  }
   if (email.length > 180) errors.email = "E-mail muito longo.";
-  if (phone.replace(/\D/g, "").length < 10) errors.phone = "Telefone inválido.";
+  if (phone.replace(/\D/g, "").length < 10) errors.phone = "Informe o telefone com DDD.";
   if (phone.length > 30) errors.phone = "Telefone inválido.";
   if (attending !== "yes" && attending !== "no") {
-    errors.attending = "Selecione uma opção.";
+    errors.attending = "Escolha se você vai ou não.";
   }
   if (notes.length > 800) errors.notes = "Observação muito longa.";
 

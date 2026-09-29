@@ -22,14 +22,14 @@ export default function App() {
       <main>
         <Hero />
         <Countdown />
-        <Story />
-        <Couple />
-        <Gallery />
         <Venue />
         <Schedule />
         <RSVP />
         <Gifts />
         <DressCode />
+        <Story />
+        <Gallery />
+        <Couple />
         <FAQ />
         <Closing />
       </main>

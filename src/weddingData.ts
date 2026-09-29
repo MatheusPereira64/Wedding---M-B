@@ -60,7 +60,6 @@ export const weddingData = {
 
   names: "Matheus & Brena",
   headline: "Estamos escrevendo um novo capítulo da nossa história.",
-  kicker: "Nosso grande dia",
   closingQuote:
     "Mal podemos esperar para celebrar esse momento ao lado de vocês.",
 
@@ -68,6 +67,7 @@ export const weddingData = {
   dateLabel: "26.03.2027",
   dateLong: "26 de março de 2027",
   timeLabel: "18:00",
+  arrivalLabel: "17:40",
   durationLabel: "5 horas",
   durationHours: 5,
   timezone: "America/Manaus",
@@ -78,7 +78,7 @@ export const weddingData = {
     neighborhood: "Flores",
     city: "Manaus",
     state: "AM",
-    fullAddress: "Rua Barão de Indaiá, 1434 — Flores, Manaus - AM",
+    fullAddress: "Rua Barão de Indaiá, 1434, Flores, Manaus - AM",
     mapsQuery: "Maison Myrla Eventos, Rua Barão de Indaiá, 1434, Flores, Manaus, AM",
     parking:
       "Estacionamento disponível no local. Recomendamos chegar com antecedência para maior comodidade.",
@@ -127,7 +127,7 @@ export const weddingData = {
     {
       year: "2025",
       title: "O pedido",
-      text: "Entre nervosismo e alegria, a pergunta que mudou tudo — e um sim que ainda ecoa.",
+      text: "Entre nervosismo e alegria, a pergunta que mudou tudo. E um sim que ainda ecoa.",
       photo:
         "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80",
     },
@@ -221,7 +221,7 @@ export const weddingData = {
     {
       time: "23:00",
       title: "Encerramento",
-      description: "O último brinde — e o começo da nossa vida a dois.",
+      description: "O último brinde e o começo da nossa vida a dois.",
       icon: "sparkles",
     },
   ] satisfies ScheduleItem[],
@@ -286,12 +286,12 @@ export const weddingData = {
 
   nav: [
     { id: "inicio", label: "Início" },
-    { id: "historia", label: "Nossa História" },
-    { id: "galeria", label: "Galeria" },
     { id: "local", label: "Local" },
     { id: "programacao", label: "Programação" },
     { id: "rsvp", label: "RSVP" },
     { id: "presentes", label: "Presentes" },
+    { id: "historia", label: "Nossa História" },
+    { id: "galeria", label: "Galeria" },
   ] satisfies { id: NavId; label: string }[],
 
   seo: {
@@ -304,6 +304,11 @@ export const weddingData = {
 
 export function mapsUrl(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+/** Monta um srcset de uma URL do Unsplash trocando o parâmetro `w=`. */
+export function srcSet(url: string, widths: number[]) {
+  return widths.map((w) => `${url.replace(/([?&])w=\d+/, `$1w=${w}`)} ${w}w`).join(", ");
 }
 
 export function mapsEmbed(query: string) {

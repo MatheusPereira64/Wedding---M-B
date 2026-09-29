@@ -37,7 +37,7 @@ export async function sendRsvpEmail(payload: RsvpPayload): Promise<{ method: "em
   await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
     to_email: "matheuspereira6464@gmail.com",
     guest_name: payload.name.trim(),
-    guest_email: payload.email.trim(),
+    guest_email: payload.email.trim() || "(não informado)",
     guest_phone: payload.phone.trim(),
     attending: payload.attending,
     attendance: attendanceLabel(payload.attending),

@@ -2,11 +2,11 @@ import { weddingData } from "../../weddingData";
 import styles from "./Footer.module.css";
 
 const links = [
-  { href: "#historia", label: "Nossa história" },
   { href: "#local", label: "Local" },
-  { href: "#galeria", label: "Galeria" },
   { href: "#rsvp", label: "RSVP" },
   { href: "#presentes", label: "Presentes" },
+  { href: "#historia", label: "Nossa história" },
+  { href: "#galeria", label: "Galeria" },
 ];
 
 export function Footer() {

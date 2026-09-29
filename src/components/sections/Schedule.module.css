@@ -1,3 +1,7 @@
+.section {
+  background: var(--color-white);
+}
+
 .header {
   text-align: center;
   margin-bottom: 2.4rem;
@@ -9,6 +13,7 @@
 
 .duration {
   margin-top: 1rem;
+  text-wrap: balance;
   color: var(--color-text-muted);
   font-size: 0.95rem;
 }
@@ -46,15 +51,20 @@
   height: 22px;
 }
 
-.time {
+.row .time {
   font-family: var(--font-serif);
-  color: var(--color-gold);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: var(--color-text);
   min-width: 4.2rem;
-  padding-top: 0.55rem;
+  padding-top: 0.6rem;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .row h3 {
   font-size: 1.25rem;
+  padding-top: 0.6rem;
+  margin-bottom: 0.3rem;
 }
 
 .row p {

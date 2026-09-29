@@ -17,10 +17,11 @@ export function Countdown() {
     <section id="countdown" className={`section ${styles.section}`}>
       <FadeIn>
         {value.arrived ? (
-          <p className={styles.arrived}>Hoje é o nosso grande dia! ❤️</p>
+          <p className={styles.arrived}>
+            Hoje é o nosso grande dia! <span aria-hidden>❤️</span>
+          </p>
         ) : (
           <>
-            <p className="eyebrow">Contagem regressiva</p>
             <h2 className={styles.title}>Falta pouco para o sim</h2>
             <span className="ornament" />
             <div className={styles.grid}>

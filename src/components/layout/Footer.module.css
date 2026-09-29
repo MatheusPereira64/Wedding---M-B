@@ -1,4 +1,5 @@
 .footer {
+  --focus-ring: var(--color-ivory);
   background: var(--color-burgundy-deep);
   color: var(--color-ivory);
   text-align: center;
@@ -37,9 +38,11 @@
   opacity: 0.82;
 }
 
-.links a:hover {
-  color: var(--color-gold);
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .links a:hover {
+    color: var(--color-gold);
+    opacity: 1;
+  }
 }
 
 .love {

@@ -8,7 +8,6 @@ export function FAQ() {
     <section className="section">
       <FadeIn>
         <header className={styles.header}>
-          <p className="eyebrow">Dúvidas</p>
           <h2>Perguntas frequentes</h2>
           <span className="ornament" />
         </header>

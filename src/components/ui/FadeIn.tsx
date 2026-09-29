@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./FadeIn.module.css";
 
 type Props = {
   children: ReactNode;
   className?: string;
+  /** Atraso em ms para escalonar itens que entram juntos (ex.: linhas de uma lista). */
+  delay?: number;
 };
 
-export function FadeIn({ children, className }: Props) {
+export function FadeIn({ children, className, delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -14,8 +16,7 @@ export function FadeIn({ children, className }: Props) {
     const node = ref.current;
     if (!node) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
+    if (!("IntersectionObserver" in window)) {
       setVisible(true);
       return;
     }
@@ -27,7 +28,7 @@ export function FadeIn({ children, className }: Props) {
           observer.disconnect();
         }
       },
-      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
     );
 
     observer.observe(node);
@@ -38,6 +39,7 @@ export function FadeIn({ children, className }: Props) {
     <div
       ref={ref}
       className={`${styles.fade} ${visible ? styles.visible : ""} ${className ?? ""}`}
+      style={delay ? ({ "--fade-delay": `${delay}ms` } as CSSProperties) : undefined}
     >
       {children}
     </div>
