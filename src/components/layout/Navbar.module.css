@@ -73,6 +73,7 @@
   color: inherit;
   opacity: 0.78;
   border-bottom: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .active {
@@ -155,7 +156,7 @@
   border-bottom: 0;
 }
 
-@media (min-width: 980px) {
+@media (min-width: 1080px) {
   .desktop {
     display: flex;
   }

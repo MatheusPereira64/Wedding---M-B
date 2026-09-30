@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 
 const links = [
   { href: "#local", label: "Local" },
-  { href: "#rsvp", label: "RSVP" },
+  { href: "#rsvp", label: "Confirmar presença" },
   { href: "#presentes", label: "Presentes" },
   { href: "#historia", label: "Nossa história" },
   { href: "#galeria", label: "Galeria" },

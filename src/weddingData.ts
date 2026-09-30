@@ -83,7 +83,7 @@ export const weddingData = {
     parking:
       "Estacionamento disponível no local. Recomendamos chegar com antecedência para maior comodidade.",
     accessibility:
-      "O espaço conta com acesso facilitado. Em caso de necessidades específicas, fale conosco no RSVP.",
+      "O espaço conta com acesso facilitado. Em caso de necessidades específicas, avise na confirmação de presença.",
     extra:
       "O convite é pessoal e intransferível. Em caso de dúvidas, utilize o formulário de confirmação.",
   },
@@ -250,7 +250,7 @@ export const weddingData = {
     {
       question: "Como confirmar minha presença?",
       answer:
-        "Use o formulário de RSVP nesta página. Leva menos de um minuto e nos ajuda muito na organização.",
+        "Use o formulário de confirmação de presença nesta página. Leva menos de um minuto e nos ajuda muito na organização.",
     },
     {
       question: "Existe lista de presentes?",
@@ -279,7 +279,7 @@ export const weddingData = {
   rsvp: {
     title: "Você faz parte desse momento.",
     subtitle: "Confirme sua presença e nos ajude a preparar cada detalhe com carinho.",
-    successTitle: "Recebemos o seu RSVP.",
+    successTitle: "Recebemos a sua confirmação.",
     successText:
       "Obrigado por responder. Estamos muito felizes em compartilhar esse dia com você.",
   },
@@ -288,7 +288,7 @@ export const weddingData = {
     { id: "inicio", label: "Início" },
     { id: "local", label: "Local" },
     { id: "programacao", label: "Programação" },
-    { id: "rsvp", label: "RSVP" },
+    { id: "rsvp", label: "Confirmar presença" },
     { id: "presentes", label: "Presentes" },
     { id: "historia", label: "Nossa História" },
     { id: "galeria", label: "Galeria" },
