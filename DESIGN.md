@@ -62,6 +62,7 @@ typography:
     letterSpacing: "0.22em"
 rounded:
   hairline: "2px"
+  sheet: "16px"
   pill: "999px"
 spacing:
   "1": "0.25rem"
@@ -201,7 +202,7 @@ O papel é plano: a profundidade vem da alternância marfim/branco e dos filetes
 
 ## Shapes
 
-Cantos quase retos (2px) em botões, cartões e campos, como papel cortado. A forma arredondada é reservada para o que é pessoal ou flutuante: os retratos dos noivos em círculo com anel dourado e a barra de confirmação em pílula. Bordas são filetes de 1px.
+Cantos quase retos (2px) em botões, cartões e campos, como papel cortado. A forma arredondada é reservada para o que é pessoal ou flutuante: os retratos dos noivos em círculo com anel dourado, a barra de confirmação e os filtros da área dos noivos em pílula, e os painéis que sobem da parte de baixo da tela com cantos superiores de 16px. Bordas são filetes de 1px.
 
 ## Components
 

@@ -115,11 +115,23 @@ Endpoints da API local (opcional em desenvolvimento):
 | POST   | `/api/rsvp`   | Grava uma confirmação          |
 | GET    | `/api/gifts`  | Devolve os links das listas    |
 
+## Área dos noivos
+
+Página separada em `admin.html` (acesso pelo cadeado no canto superior do site), para os noivos acompanharem as confirmações dos 80 convidados:
+
+- **Visão geral:** quantos responderam, vão, não vão e estão pendentes, com divisão por lado e grupo, respostas recentes e observações.
+- **Convidados:** busca, filtros, link pessoal por convite, lembrete pelo WhatsApp, edição e exportação em CSV.
+
+Por enquanto é **só a camada de UI**, com dados fictícios salvos no navegador. Login de demonstração: `noivos@demo.local` / `convite2027`.
+
+O backend planejado é AWS: usuários no Cognito, dados no DynamoDB e hospedagem no Amplify. As telas leem tudo pelas interfaces `AuthService` e `InviteRepository` em [`src/admin/data.ts`](src/admin/data.ts). Para ligar a AWS, basta criar adaptadores que implementem essas interfaces e trocá-los nesse arquivo.
+
 ## Estrutura do projeto
 
 ```
 src/
   weddingData.ts          conteúdo do casamento
+  admin/                  área dos noivos (UI com dados de exemplo)
   api/                    RSVP (EmailJS + API) e presentes
   components/
     layout/               navbar e rodapé

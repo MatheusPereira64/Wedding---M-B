@@ -1,0 +1,111 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-4)
+    calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+}
+
+.card {
+  width: min(100%, 26rem);
+  background: var(--color-white);
+  border: 1px solid var(--color-beige);
+  border-radius: var(--radius);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+}
+
+.names {
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  font-weight: 500;
+}
+
+.card h1 {
+  margin-top: var(--space-3);
+  font-size: var(--text-h3-lg);
+}
+
+.sub {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  text-align: left;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+}
+
+.field input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) 0.9rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius);
+  background: var(--color-white);
+  font-size: 1rem;
+}
+
+.field input:focus-visible,
+.field [aria-invalid="true"] {
+  border-color: var(--color-burgundy);
+}
+
+.passwordRow {
+  position: relative;
+}
+
+.passwordRow input {
+  padding-right: 5.5rem;
+}
+
+.toggle {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  min-width: 44px;
+  padding: 0 var(--space-3);
+  color: var(--color-burgundy);
+  font-size: var(--text-small);
+  font-weight: 500;
+}
+
+.error {
+  color: var(--color-burgundy);
+  font-size: var(--text-small);
+  font-weight: 500;
+}
+
+.demo {
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-ivory);
+  border: 1px dashed var(--color-line-strong);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: var(--space-4);
+  color: var(--color-burgundy);
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--color-gold);
+}

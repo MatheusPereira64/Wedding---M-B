@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "./Button";
 import styles from "./QRCodeCard.module.css";
@@ -11,19 +12,6 @@ type Props = {
 };
 
 const WIDE = "(min-width: 720px)";
-
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
-
-  useEffect(() => {
-    const list = window.matchMedia(query);
-    const onChange = () => setMatches(list.matches);
-    list.addEventListener("change", onChange);
-    return () => list.removeEventListener("change", onChange);
-  }, [query]);
-
-  return matches;
-}
 
 export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
   const [status, setStatus] = useState<"idle" | "ok">("idle");

@@ -14,7 +14,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* clip (e não hidden): corta o excesso lateral sem transformar o body num
+     contêiner de rolagem, o que quebraria o position: sticky. */
+  overflow-x: clip;
 }
 
 body {

@@ -10,6 +10,13 @@ export default defineConfig({
     outDir: "docs",
     assetsDir: "assets",
     emptyOutDir: true,
+    rollupOptions: {
+      // A área dos noivos é uma página separada para não pesar no convite.
+      input: {
+        main: "index.html",
+        admin: "admin.html",
+      },
+    },
   },
   server: {
     proxy: {

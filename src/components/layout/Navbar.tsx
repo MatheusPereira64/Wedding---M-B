@@ -78,6 +78,17 @@ export function Navbar() {
               </button>
             ))}
           </nav>
+          <a
+            className={styles.admin}
+            href={`${import.meta.env.BASE_URL}admin.html`}
+            aria-label="Área dos noivos"
+            title="Área dos noivos"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden>
+              <rect x="5" y="10.5" width="14" height="10" rx="1.5" />
+              <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" />
+            </svg>
+          </a>
           <button
             ref={burgerRef}
             className={`${styles.burger} ${open ? styles.burgerOpen : ""}`}
