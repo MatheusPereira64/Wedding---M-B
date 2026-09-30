@@ -4,52 +4,57 @@
 
 .header {
   text-align: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: var(--space-header);
 }
 
 .header h2 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  max-width: 22ch;
+  max-width: 24ch;
   margin-inline: auto;
 }
 
 .intro {
   max-width: 36rem;
-  margin: 1rem auto 0;
+  margin: var(--space-4) auto 0;
   color: var(--color-text-muted);
 }
 
 .grid {
   display: grid;
-  gap: 1.25rem;
+  gap: var(--space-5);
 }
 
 .lists {
   display: grid;
-  gap: 1.25rem;
+  gap: var(--space-5);
 }
 
 .store {
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   color: var(--color-gold-text);
 }
 
-.soon {
-  min-height: 48px;
-  display: grid;
-  place-items: center;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
+.soonLine {
+  margin-top: var(--space-3);
   color: var(--color-text-muted);
+  font-size: var(--text-small);
+}
+
+.single {
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.lists > * {
+  height: 100%;
 }
 
 .card {
   background: var(--color-ivory);
   border: 1px solid var(--color-beige);
-  padding: 2.2rem 1.4rem;
+  padding: var(--space-6) var(--space-5);
+  height: 100%;
   text-align: center;
   display: grid;
   justify-items: center;
@@ -57,7 +62,7 @@
 }
 
 .card h3 {
-  font-size: 1.5rem;
+  font-size: var(--text-h3);
 }
 
 .card p {
@@ -70,4 +75,9 @@
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
   }
+}
+
+/* Só o PIX: uma coluna, mesmo no desktop. */
+.grid.single {
+  grid-template-columns: 1fr;
 }

@@ -23,6 +23,34 @@
 
   --focus-ring: var(--color-burgundy);
 
+  /* Escala de tipo por papel (DM Sans para texto, Playfair para títulos). */
+  --text-label: 0.8125rem; /* rótulos em caixa alta, botões, eyebrow */
+  --text-small: 0.9375rem; /* rótulos de formulário, erros, dicas */
+  --text-body: 1rem;
+  --text-h4: 1.25rem; /* itens da programação, perguntas */
+  --text-h3: 1.5rem; /* títulos de cartão */
+  --text-h3-lg: 1.75rem; /* nomes dos noivos, sucesso do RSVP */
+  --text-h2: clamp(2rem, 1.5rem + 2.2vw, 2.75rem); /* título de seção */
+
+  --tracking-label: 0.12em;
+  --tracking-eyebrow: 0.22em;
+  --tracking-date: 0.24em;
+
+  /* Escala de espaçamento. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3.5rem;
+  --space-9: 4.5rem;
+  --space-10: 6.5rem;
+  --space-header: var(--space-7); /* do bloco de título até o conteúdo */
+  --space-stack: var(--space-3); /* entre cartões irmãos */
+  --measure: 38rem; /* largura máxima de texto corrido */
+
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);

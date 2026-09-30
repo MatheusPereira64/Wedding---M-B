@@ -130,12 +130,12 @@
         <img src="./pix-qr.jpg" alt="QR Code PIX" width="196" height="196" />
       </div>
       <ol class="steps">
-        <li>O código PIX já foi copiado automaticamente.</li>
+        <li>Toque em <strong>Copiar código PIX</strong> abaixo.</li>
         <li>Abra o aplicativo do seu banco.</li>
         <li>Escolha <strong>PIX → Pix Copia e Cola</strong>.</li>
         <li>Cole o código e confirme o valor do presente.</li>
       </ol>
-      <button class="btn" id="copiar" type="button">Copiar código PIX novamente</button>
+      <button class="btn" id="copiar" type="button">Copiar código PIX</button>
       <p class="status" id="status" role="status"></p>
       <a class="back" href="./#presentes">Voltar ao site</a>
     </main>
@@ -162,11 +162,10 @@
         }
       }
 
+      // A cópia só funciona a partir de um toque do usuário.
       document.getElementById("copiar").addEventListener("click", () => {
         void copiar(true);
       });
-
-      void copiar(true);
     </script>
   </body>
 </html>

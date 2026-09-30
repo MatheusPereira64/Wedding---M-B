@@ -42,8 +42,8 @@
   transform: translateX(-50%);
   color: var(--color-ivory);
   opacity: 0.78;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-date);
   font-variant-numeric: tabular-nums;
 }
 

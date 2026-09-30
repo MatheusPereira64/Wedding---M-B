@@ -35,6 +35,8 @@ export function Gifts() {
     };
   }, []);
 
+  const withLink = gifts.filter((gift) => gift.url);
+
   return (
     <section id="presentes" className={`section ${styles.section}`}>
       <FadeIn>
@@ -43,27 +45,28 @@ export function Gifts() {
           <h2>{weddingData.gifts.title}</h2>
           <span className="ornament" />
           <p className={styles.intro}>{weddingData.gifts.intro}</p>
+          {withLink.length ? null : (
+            <p className={styles.soonLine}>{weddingData.gifts.listLabel}: link em breve.</p>
+          )}
         </header>
       </FadeIn>
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ${withLink.length ? "" : styles.single}`}>
+        {withLink.length ? (
         <div className={styles.lists}>
-          {gifts.map((gift) => (
+          {withLink.map((gift) => (
             <FadeIn key={gift.id}>
               <article className={styles.card}>
                 <h3>{gift.title}</h3>
-                {gift.store && gift.url ? <p className={styles.store}>{gift.store}</p> : null}
+                {gift.store ? <p className={styles.store}>{gift.store}</p> : null}
                 <p>{gift.description}</p>
-                {gift.url ? (
-                  <Button href={gift.url} variant="ghost">
-                    Ver lista de presentes
-                  </Button>
-                ) : (
-                  <p className={styles.soon}>Link em breve</p>
-                )}
+                <Button href={gift.url} variant="ghost">
+                  Ver lista de presentes
+                </Button>
               </article>
             </FadeIn>
           ))}
         </div>
+        ) : null}
         <FadeIn>
           <QRCodeCard
             value={weddingData.pix.key}

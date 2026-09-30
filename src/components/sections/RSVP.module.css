@@ -1,10 +1,6 @@
 .header {
   text-align: center;
-  margin-bottom: 2.2rem;
-}
-
-.header h2 {
-  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin-bottom: var(--space-header);
 }
 
 .sub {
@@ -17,14 +13,17 @@
   max-width: 36rem;
   margin-inline: auto;
   display: grid;
-  gap: 1rem;
+  gap: var(--space-5);
 }
 
-.form label,
-.form legend {
+.field {
   display: grid;
-  gap: 0.4rem;
-  font-size: 0.86rem;
+  gap: var(--space-2);
+}
+
+.field > label,
+.form legend {
+  font-size: var(--text-small);
 }
 
 .form input,
@@ -49,10 +48,6 @@
   border-color: var(--color-burgundy);
 }
 
-.labelText {
-  display: inline;
-}
-
 .optional {
   color: var(--color-text-muted);
 }
@@ -64,7 +59,8 @@
 
 .error {
   color: var(--color-burgundy);
-  font-size: 0.86rem;
+  font-size: var(--text-small);
+  font-weight: 500;
 }
 
 .form fieldset {
@@ -87,7 +83,8 @@
 }
 
 .radio {
-  display: flex !important;
+  display: flex;
+  font-size: var(--text-small);
   align-items: center;
   gap: 0.65rem;
   min-height: 44px;
@@ -101,7 +98,8 @@
 
 .formError {
   color: var(--color-burgundy);
-  font-size: 0.86rem;
+  font-size: var(--text-small);
+  font-weight: 500;
 }
 
 .success {
@@ -115,7 +113,7 @@
 }
 
 .success h3 {
-  font-size: 1.8rem;
+  font-size: var(--text-h3-lg);
   margin-bottom: 0.6rem;
 }
 
@@ -144,5 +142,16 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
+  }
+}
+
+/* O RSVP é o clímax da página: mais respiro que as outras seções. */
+.section:global(.section) {
+  padding-block: 6rem;
+}
+
+@media (min-width: 768px) {
+  .section:global(.section) {
+    padding-block: 8rem;
   }
 }

@@ -4,9 +4,9 @@
   justify-content: center;
   min-height: 48px;
   padding: 0.85rem 1.6rem;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 500;
   border-radius: var(--radius);
   user-select: none;

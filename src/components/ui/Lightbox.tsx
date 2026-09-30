@@ -86,7 +86,7 @@ export function Lightbox({ src, alt, index, total, onClose, onPrev, onNext }: Pr
         aria-hidden
       />
       <img key={src} src={src} alt={alt} className={styles.image} draggable={false} />
-      <p className={styles.counter} aria-hidden>
+      <p className={styles.counter} aria-live="polite">
         {index + 1} / {total}
       </p>
       <button ref={closeRef} className={styles.close} onClick={onClose} aria-label="Fechar">

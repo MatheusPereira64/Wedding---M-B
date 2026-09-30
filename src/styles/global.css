@@ -100,8 +100,13 @@ p {
 }
 
 .section {
-  padding: 4.5rem max(1.25rem, env(safe-area-inset-right, 0px)) 4.5rem
+  padding: var(--space-9) max(1.25rem, env(safe-area-inset-right, 0px)) var(--space-9)
     max(1.25rem, env(safe-area-inset-left, 0px));
+}
+
+/* Título de seção: um só tamanho em todo o site. */
+.section h2 {
+  font-size: var(--text-h2);
 }
 
 .section > * {
@@ -114,12 +119,12 @@ section[id] {
 }
 
 .eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.24em;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--color-gold-text);
   font-weight: 500;
-  margin-bottom: 0.85rem;
+  margin-bottom: var(--space-3);
 }
 
 .ornament {
@@ -132,7 +137,7 @@ section[id] {
 
 @media (min-width: 768px) {
   .section {
-    padding: 6.5rem max(2rem, env(safe-area-inset-right, 0px)) 6.5rem
+    padding: var(--space-10) max(2rem, env(safe-area-inset-right, 0px)) var(--space-10)
       max(2rem, env(safe-area-inset-left, 0px));
   }
 }

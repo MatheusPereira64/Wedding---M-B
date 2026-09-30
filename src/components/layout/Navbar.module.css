@@ -67,8 +67,8 @@
 .drawerLink {
   min-height: 44px;
   padding: 0.4rem 0.7rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: inherit;
   opacity: 0.78;

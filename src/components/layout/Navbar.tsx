@@ -27,9 +27,22 @@ export function Navbar() {
     if (!open) return;
 
     const onKey = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setOpen(false);
-      burgerRef.current?.focus();
+      if (event.key === "Escape") {
+        setOpen(false);
+        burgerRef.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      // Com o menu aberto, o foco circula entre o botão e os links do menu.
+      const links = [...document.querySelectorAll<HTMLElement>("#menu-mobile button")];
+      const last = links[links.length - 1];
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        burgerRef.current?.focus();
+      } else if (event.shiftKey && document.activeElement === burgerRef.current) {
+        event.preventDefault();
+        last?.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {

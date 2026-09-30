@@ -1,7 +1,7 @@
 .card {
   background: var(--color-ivory);
   border: 1px solid var(--color-beige);
-  padding: 2rem 1.4rem;
+  padding: var(--space-6) var(--space-5);
   text-align: center;
   display: grid;
   justify-items: center;
@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: var(--text-h3);
 }
 
 .qrWrap {
@@ -27,19 +27,18 @@
 
 .name {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: var(--text-h4);
   margin-top: 0.35rem;
 }
 
 .hint {
-  font-size: 0.88rem;
+  font-size: var(--text-small);
   color: var(--color-text-muted);
   max-width: 22rem;
 }
 
 .feedback {
-  min-height: 1.4em;
-  font-size: 0.86rem;
+  font-size: var(--text-small);
   color: var(--color-burgundy);
   max-width: 22rem;
 }
@@ -55,7 +54,7 @@
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: var(--text-small);
   color: var(--color-burgundy);
   text-decoration: underline;
   text-underline-offset: 0.25em;

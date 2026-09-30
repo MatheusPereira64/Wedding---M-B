@@ -6,17 +6,7 @@
   padding: 3.5rem 1.25rem calc(2.75rem + env(safe-area-inset-bottom, 0px));
 }
 
-.names {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-}
 
-.date {
-  letter-spacing: 0.22em;
-  color: var(--color-gold);
-  margin: 0.55rem 0 1.5rem;
-  font-size: 0.85rem;
-}
 
 .links {
   display: flex;
@@ -32,8 +22,8 @@
   justify-content: center;
   min-height: 44px;
   padding: 0.6rem 0.4rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   opacity: 0.82;
 }

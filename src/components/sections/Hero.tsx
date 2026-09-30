@@ -66,9 +66,6 @@ export function Hero() {
           </Button>
         </div>
       </div>
-      <a href="#countdown" className={styles.scroll} aria-label="Ver mais conteúdo">
-        <span />
-      </a>
     </section>
   );
 }

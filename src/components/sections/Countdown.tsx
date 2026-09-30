@@ -22,7 +22,7 @@ export function Countdown() {
           </p>
         ) : (
           <>
-            <h2 className={styles.title}>Falta pouco para o sim</h2>
+            <h2>Falta pouco para o sim</h2>
             <span className="ornament" />
             <div className={styles.grid}>
               {units.map((unit) => (

@@ -19,7 +19,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(92, 21, 32, 0.58);
+  background: rgba(92, 21, 32, 0.68);
 }
 
 .content {
@@ -43,9 +43,9 @@
 }
 
 .date {
-  margin-top: 0.45rem;
-  letter-spacing: 0.24em;
-  color: var(--color-gold);
+  margin-top: var(--space-2);
+  letter-spacing: var(--tracking-date);
+  color: var(--color-ivory);
   font-size: 0.85rem;
 }
 

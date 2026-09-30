@@ -120,9 +120,10 @@ export function RSVP() {
           </div>
         ) : (
           <form className={styles.form} onSubmit={(event) => void onSubmit(event)} noValidate>
-            <label>
-              Nome completo
+            <div className={styles.field}>
+              <label htmlFor="rsvp-name">Nome completo</label>
               <input
+                id="rsvp-name"
                 {...fieldProps("name")}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -130,12 +131,13 @@ export function RSVP() {
                 maxLength={120}
               />
               {error("name")}
-            </label>
-            <label>
-              <span className={styles.labelText}>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="rsvp-email">
                 E-mail <span className={styles.optional}>(opcional)</span>
-              </span>
+              </label>
               <input
+                id="rsvp-email"
                 {...fieldProps("email")}
                 type="email"
                 value={form.email}
@@ -145,10 +147,11 @@ export function RSVP() {
                 maxLength={180}
               />
               {error("email")}
-            </label>
-            <label>
-              Telefone
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="rsvp-phone">Telefone</label>
               <input
+                id="rsvp-phone"
                 {...fieldProps("phone")}
                 type="tel"
                 inputMode="tel"
@@ -158,7 +161,7 @@ export function RSVP() {
                 maxLength={30}
               />
               {error("phone")}
-            </label>
+            </div>
             <fieldset
               aria-invalid={errors.attending ? true : undefined}
               aria-describedby={errors.attending ? "rsvp-attending-error" : undefined}
@@ -187,9 +190,10 @@ export function RSVP() {
               </label>
               {error("attending")}
             </fieldset>
-            <label>
-              Observações
+            <div className={styles.field}>
+              <label htmlFor="rsvp-notes">Observações</label>
               <textarea
+                id="rsvp-notes"
                 {...fieldProps("notes")}
                 rows={4}
                 value={form.notes}
@@ -197,7 +201,7 @@ export function RSVP() {
                 maxLength={800}
               />
               {error("notes")}
-            </label>
+            </div>
             {formError ? (
               <p className={styles.formError} role="alert">
                 {formError}

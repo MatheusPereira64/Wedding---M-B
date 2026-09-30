@@ -13,6 +13,7 @@ import { DressCode } from "./components/sections/DressCode";
 import { FAQ } from "./components/sections/FAQ";
 import { Closing } from "./components/sections/Closing";
 import { Seo } from "./seo";
+import { RsvpBar } from "./components/ui/RsvpBar";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Closing />
       </main>
       <Footer />
+      <RsvpBar />
     </>
   );
 }

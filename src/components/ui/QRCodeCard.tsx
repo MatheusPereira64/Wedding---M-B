@@ -50,7 +50,15 @@ export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
   const qr = (
     <div className={styles.qrWrap}>
       {qrImage ? (
-        <img src={qrImage} alt={`QR Code PIX de ${name}`} className={styles.qrImage} />
+        <img
+          src={qrImage}
+          alt={`QR Code PIX de ${name}`}
+          className={styles.qrImage}
+          width={196}
+          height={196}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <QRCodeSVG
           value={payload}
@@ -77,15 +85,15 @@ export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
       <Button onClick={() => void copyCode()} aria-describedby="pix-status">
         {status === "ok" ? "Código copiado" : "Copiar código PIX"}
       </Button>
-      <p id="pix-status" className={styles.feedback} role="status">
-        {status === "ok" ? "Pronto. Agora é só colar no app do seu banco." : ""}
-      </p>
       {wide ? null : (
         <details className={styles.qrDetails}>
           <summary>Pagar com QR Code em outro aparelho</summary>
           {qr}
         </details>
       )}
+      <p id="pix-status" className={styles.feedback} role="status">
+        {status === "ok" ? "Pronto. Agora é só colar no app do seu banco." : ""}
+      </p>
     </article>
   );
 }

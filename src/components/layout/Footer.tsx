@@ -1,4 +1,3 @@
-import { weddingData } from "../../weddingData";
 import styles from "./Footer.module.css";
 
 const links = [
@@ -12,8 +11,6 @@ const links = [
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <p className={styles.names}>{weddingData.names}</p>
-      <p className={styles.date}>{weddingData.dateLabel}</p>
       <nav className={styles.links} aria-label="Rodapé">
         {links.map((link) => (
           <a key={link.href} href={link.href}>
