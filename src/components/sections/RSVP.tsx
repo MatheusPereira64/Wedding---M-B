@@ -3,6 +3,7 @@ import { ApiError } from "../../api/client";
 import { submitRsvp } from "../../api/rsvp";
 import { weddingData, type RsvpPayload } from "../../weddingData";
 import { Button } from "../ui/Button";
+import { celebrate } from "../ui/celebrate";
 import { FadeIn } from "../ui/FadeIn";
 import styles from "./RSVP.module.css";
 
@@ -63,7 +64,11 @@ export function RSVP() {
     try {
       await submitRsvp(form as RsvpPayload);
       setStatus("ok");
-      requestAnimationFrame(() => successRef.current?.focus());
+      requestAnimationFrame(() => {
+        successRef.current?.focus();
+        // Celebração só para quem confirmou presença.
+        if (form.attending === "yes") celebrate(successRef.current);
+      });
     } catch (error) {
       setStatus("idle");
       if (error instanceof ApiError && error.fields) {

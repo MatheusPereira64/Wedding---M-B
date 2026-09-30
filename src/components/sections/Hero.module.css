@@ -87,6 +87,35 @@
   }
 }
 
+/* Momento principal: os nomes aparecem como tinta correndo no papel (esquerda
+   para a direita) e o "&" dourado se assenta logo depois, saindo do desfoque. */
+.content > .names {
+  animation: ink 1100ms var(--ease-in-out) 150ms both;
+}
+
+.names span {
+  animation: settle 800ms var(--ease-out) 750ms both;
+}
+
+@keyframes ink {
+  from {
+    clip-path: inset(-12% 100% -12% 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(-12% -6% -12% 0);
+    opacity: 1;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: scale(0.92);
+  }
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -146,7 +175,66 @@
     animation: none;
   }
 
-  .content > * {
+  .content > *,
+  .content > .names,
+  .names span {
     animation: fade 300ms ease both;
+  }
+}
+
+/* Celular: botões empilhados com a mesma largura, fáceis de acertar com o polegar. */
+@media (max-width: 479px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: min(100%, 17rem);
+    margin-inline: auto;
+  }
+}
+
+/* Telas baixas: o indicador de rolagem encostaria nos botões. */
+@media (max-height: 640px) {
+  .scroll {
+    display: none;
+  }
+}
+
+/* Celular deitado: nomes numa linha e botões lado a lado para o
+   "Confirmar presença" caber na primeira tela. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .content {
+    padding: calc(var(--nav-height) + 0.5rem) 1.25rem 1.5rem;
+    max-width: 52rem;
+  }
+
+  .names {
+    font-size: clamp(2.2rem, 13svh, 3.4rem);
+    line-height: 1.05;
+  }
+
+  .names span {
+    display: inline;
+    margin: 0 0.25em;
+    font-size: 0.6em;
+  }
+
+  .phrase {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .when {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .where {
+    margin: 0.2rem 0 1rem;
+    font-size: 0.85rem;
+  }
+
+  .actions {
+    flex-direction: row;
+    width: auto;
   }
 }

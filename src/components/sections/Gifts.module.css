@@ -30,9 +30,9 @@
 }
 
 .store {
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--color-gold-text);
 }
 
@@ -40,9 +40,9 @@
   min-height: 48px;
   display: grid;
   place-items: center;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
 }
 

@@ -75,7 +75,7 @@ export function Schedule() {
                   <Icon name={item.icon} />
                 </div>
                 <p className={styles.time}>{item.time}</p>
-                <div>
+                <div className={styles.body}>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>

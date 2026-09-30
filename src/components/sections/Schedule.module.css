@@ -71,3 +71,34 @@
   color: var(--color-text-muted);
   font-size: 0.94rem;
 }
+
+/* Telas estreitas: o horário sobe para cima do título e o texto ganha a largura toda. */
+@media (max-width: 479px) {
+  .row {
+    grid-template-columns: 44px 1fr;
+    grid-template-areas:
+      "icon time"
+      "icon body";
+    row-gap: 0.15rem;
+  }
+
+  .icon {
+    grid-area: icon;
+  }
+
+  .row .time {
+    grid-area: time;
+    min-width: 0;
+    padding-top: 0.1rem;
+    font-size: 1rem;
+    color: var(--color-gold-text);
+  }
+
+  .body {
+    grid-area: body;
+  }
+
+  .row h3 {
+    padding-top: 0;
+  }
+}

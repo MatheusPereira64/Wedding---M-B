@@ -61,7 +61,29 @@
   }
 }
 
+/* Revelação: a foto se descobre de cima para baixo, como um convite saindo do envelope.
+   O recorte fica na imagem, não no botão: o IntersectionObserver do Chrome considera o
+   clip-path do próprio alvo e nunca veria um botão totalmente recortado. */
+.grid[data-armed] .item img {
+  transition:
+    transform 500ms var(--ease-out),
+    clip-path 900ms var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+.grid[data-armed] .item:not([data-revealed]) img {
+  clip-path: inset(0 0 100% 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .grid[data-armed] .item img {
+    transition: opacity 150ms ease;
+  }
+
+  .grid[data-armed] .item:not([data-revealed]) img {
+    clip-path: none;
+    opacity: 0;
+  }
+
   .item:hover img {
     transform: none;
   }

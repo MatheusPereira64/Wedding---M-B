@@ -48,3 +48,24 @@
   color: var(--color-gold);
   font-size: 0.85rem;
 }
+
+/* Fecho cinematográfico: a foto se aproxima devagar enquanto a seção cruza a
+   tela. Sem suporte (ou com movimento reduzido) ela fica parada. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bg {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 70%;
+    }
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1);
+  }
+}
