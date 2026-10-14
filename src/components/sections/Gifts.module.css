@@ -23,18 +23,6 @@
   gap: var(--space-5);
 }
 
-.lists {
-  display: grid;
-  gap: var(--space-5);
-}
-
-.store {
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  font-size: var(--text-label);
-  color: var(--color-gold-text);
-}
-
 .soonLine {
   margin-top: var(--space-3);
   color: var(--color-text-muted);
@@ -44,37 +32,6 @@
 .single {
   max-width: 30rem;
   margin-inline: auto;
-}
-
-.lists > * {
-  height: 100%;
-}
-
-.card {
-  background: var(--color-ivory);
-  border: 1px solid var(--color-beige);
-  padding: var(--space-6) var(--space-5);
-  height: 100%;
-  text-align: center;
-  display: grid;
-  justify-items: center;
-  gap: 0.7rem;
-}
-
-.card h3 {
-  font-size: var(--text-h3);
-}
-
-.card p {
-  color: var(--color-text-muted);
-  max-width: 24rem;
-}
-
-@media (min-width: 840px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-  }
 }
 
 .qrCard {

@@ -50,25 +50,9 @@ export function Gifts() {
           )}
         </header>
       </FadeIn>
-      <div className={`${styles.grid} ${withLink.length ? "" : styles.single}`}>
-        {withLink.length ? (
-        <div className={styles.lists}>
-          {withLink.map((gift) => (
-            <FadeIn key={gift.id}>
-              <article className={styles.card}>
-                <h3>{gift.title}</h3>
-                {gift.store ? <p className={styles.store}>{gift.store}</p> : null}
-                <p>{gift.description}</p>
-                <Button href={gift.url} variant="ghost">
-                  Ver lista de presentes
-                </Button>
-              </article>
-            </FadeIn>
-          ))}
-        </div>
-        ) : null}
+      <div className={`${styles.grid} ${styles.single}`}>
         {withLink.map((gift) => (
-          <FadeIn key={`${gift.id}-qr`}>
+          <FadeIn key={gift.id}>
             <article className={styles.qrCard}>
               <h3>QR Code da lista</h3>
               <div className={styles.qrWrap}>
