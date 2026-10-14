@@ -45,7 +45,7 @@
         letter-spacing: 0.28em;
         text-transform: uppercase;
         font-size: 0.72rem;
-        color: var(--gold);
+        color: #85653a;
         margin: 0 0 0.75rem;
       }
       h1 {
@@ -127,15 +127,15 @@
       <h1>Enviar presente</h1>
       <p class="name" id="nome">Matheus Pereira</p>
       <div class="qr">
-        <img src="./pix-qr.jpg" alt="QR Code PIX" width="196" height="196" />
+        <img id="qr" alt="QR Code PIX" width="196" height="196" hidden />
       </div>
       <ol class="steps">
-        <li>O código PIX já foi copiado automaticamente.</li>
+        <li>Toque em <strong>Copiar código PIX</strong> abaixo.</li>
         <li>Abra o aplicativo do seu banco.</li>
         <li>Escolha <strong>PIX → Pix Copia e Cola</strong>.</li>
         <li>Cole o código e confirme o valor do presente.</li>
       </ol>
-      <button class="btn" id="copiar" type="button">Copiar código PIX novamente</button>
+      <button class="btn" id="copiar" type="button">Copiar código PIX</button>
       <p class="status" id="status" role="status"></p>
       <a class="back" href="./#presentes">Voltar ao site</a>
     </main>
@@ -146,6 +146,12 @@
       const params = new URLSearchParams(window.location.search);
       const nome = params.get("nome");
       if (nome) document.getElementById("nome").textContent = nome;
+      const imagem = params.get("imagem");
+      const qr = document.getElementById("qr");
+      if (imagem && qr) {
+        qr.src = imagem;
+        qr.hidden = false;
+      }
 
       const status = document.getElementById("status");
 
@@ -162,11 +168,10 @@
         }
       }
 
+      // A cópia só funciona a partir de um toque do usuário.
       document.getElementById("copiar").addEventListener("click", () => {
         void copiar(true);
       });
-
-      void copiar(true);
     </script>
   </body>
 </html>

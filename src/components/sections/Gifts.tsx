@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import { fetchGifts, type GiftList } from "../../api/gifts";
 import { weddingData } from "../../weddingData";
 import { Button } from "../ui/Button";
 import { FadeIn } from "../ui/FadeIn";
-import { QRCodeCard } from "../ui/QRCodeCard";
 import styles from "./Gifts.module.css";
 
 const fallbackGifts: GiftList[] = [
@@ -67,14 +67,26 @@ export function Gifts() {
           ))}
         </div>
         ) : null}
-        <FadeIn>
-          <QRCodeCard
-            value={weddingData.pix.key}
-            name={weddingData.pix.name}
-            qrImage={weddingData.pix.qrImage}
-            copyPaste={weddingData.pix.copyPaste}
-          />
-        </FadeIn>
+        {withLink.map((gift) => (
+          <FadeIn key={`${gift.id}-qr`}>
+            <article className={styles.qrCard}>
+              <h3>QR Code da lista</h3>
+              <div className={styles.qrWrap}>
+                <QRCodeSVG
+                  value={gift.url}
+                  size={196}
+                  bgColor="#ffffff"
+                  fgColor="#5C1520"
+                  level="M"
+                  marginSize={2}
+                  title="QR Code da lista de presentes"
+                />
+              </div>
+              <p>Aponte a câmera para abrir a lista. No celular, use o botão.</p>
+              <Button href={gift.url}>Abrir lista de presentes</Button>
+            </article>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

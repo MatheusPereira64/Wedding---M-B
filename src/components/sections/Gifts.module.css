@@ -77,7 +77,39 @@
   }
 }
 
-/* Só o PIX: uma coluna, mesmo no desktop. */
+.qrCard {
+  background: var(--color-ivory);
+  border: 1px solid var(--color-beige);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 0.7rem;
+}
+
+.qrCard h3 {
+  font-size: var(--text-h3);
+}
+
+.qrCard p {
+  color: var(--color-text-muted);
+  max-width: 22rem;
+  font-size: var(--text-small);
+}
+
+.qrWrap {
+  padding: 0.75rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-beige);
+}
+
+.qrWrap svg {
+  width: 196px;
+  height: 196px;
+  display: block;
+}
+
+/* Só um card: uma coluna, mesmo no desktop. */
 .grid.single {
   grid-template-columns: 1fr;
 }

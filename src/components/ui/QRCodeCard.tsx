@@ -30,7 +30,8 @@ export function QRCodeCard({ value, name, qrImage, copyPaste }: Props) {
       setStatus("ok");
     } catch {
       // Sem acesso à área de transferência: abre a página com o passo a passo.
-      const url = `${import.meta.env.BASE_URL}enviar-pix.html?nome=${encodeURIComponent(name)}`;
+      const image = qrImage ? `&imagem=${encodeURIComponent(qrImage)}` : "";
+      const url = `${import.meta.env.BASE_URL}enviar-pix.html?nome=${encodeURIComponent(name)}${image}`;
       window.open(url, "_blank", "noopener,noreferrer");
     }
   };

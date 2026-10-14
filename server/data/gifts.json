@@ -2,8 +2,8 @@
   {
     "id": "lista-principal",
     "title": "Lista de presentes",
-    "store": "Definir loja",
-    "url": "",
+    "store": "Google Drive",
+    "url": "https://drive.google.com/drive/folders/1e47tSjmFpmCulIyziyMSbiUj3hQbDe1Y?usp=sharing",
     "description": "Escolha um presente para nos ajudar a construir nosso novo lar."
   }
 ]

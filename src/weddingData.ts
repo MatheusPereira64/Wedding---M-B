@@ -1,3 +1,5 @@
+import pixQrImage from "./assets/pix/pix-qr.jpg";
+
 export type NavId =
   | "inicio"
   | "historia"
@@ -255,14 +257,14 @@ export const weddingData = {
     {
       question: "Existe lista de presentes?",
       answer:
-        "Sim. A sua presença já é o maior presente, mas se quiser nos presentear, há uma lista e também a opção de PIX.",
+        "Sim. A lista está numa pasta do Google Drive. Dá para abrir pelo botão ou pelo QR Code na seção de presentes.",
     },
   ] satisfies FaqItem[],
 
   pix: {
     key: "05370147213",
     name: "Matheus Pereira",
-    qrImage: `${import.meta.env.BASE_URL}pix-qr.jpg`,
+    qrImage: pixQrImage,
     /** Código PIX Copia e Cola (não exibido; usado no botão Enviar PIX) */
     copyPaste:
       "00020101021126330014br.gov.bcb.pix0111053701472135204000053039865802BR5915MATHEUS PEREIRA6006MANAUS62070503***6304BE1F",
@@ -271,7 +273,7 @@ export const weddingData = {
   gifts: {
     title: "Um presente para começar nossa nova história.",
     intro:
-      "A presença de vocês já é o maior presente. Se quiserem contribuir com a construção do nosso lar, deixamos uma lista e o PIX.",
+      "A presença de vocês já é o maior presente. Se quiserem nos presentear, a lista está no Google Drive.",
     listLabel: "Lista de presentes",
     listText: "Escolha um presente para nos ajudar a construir nosso novo lar.",
   },
