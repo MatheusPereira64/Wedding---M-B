@@ -257,7 +257,7 @@ export const weddingData = {
     {
       question: "Existe lista de presentes?",
       answer:
-        "Sim. A lista está numa pasta do Google Drive. Dá para abrir pelo botão ou pelo QR Code na seção de presentes.",
+        "Sim. A lista está numa planilha do Google. Dá para abrir pelo botão ou pelo QR Code na seção de presentes.",
     },
   ] satisfies FaqItem[],
 
@@ -273,7 +273,7 @@ export const weddingData = {
   gifts: {
     title: "Um presente para começar nossa nova história.",
     intro:
-      "A presença de vocês já é o maior presente. Se quiserem nos presentear, a lista está no Google Drive.",
+      "A presença de vocês já é o maior presente. Se quiserem nos presentear, a lista está numa planilha do Google.",
     listLabel: "Lista de presentes",
     listText: "Escolha um presente para nos ajudar a construir nosso novo lar.",
   },
